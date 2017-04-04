@@ -1,6 +1,6 @@
 exports.render = function(req, res){
     res.render('index',{
-        'title': 'hello world',
+        'title': '',
         'message': 'My name is "Thurakul"'
     })
 };
