@@ -4,7 +4,8 @@ var compression = require('compression');
 var bodyParser = require('body-parser');
 var sass = require('node-sass-middleware');
 var validator = require('express-validator');
-var cookieSession = require('cookie-session');
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
 
 module.exports = function () {
 
@@ -15,6 +16,12 @@ module.exports = function () {
     } else {
         app.use(compression);
     }
+
+    app.use(session({
+        secret: 'secret_key',
+        resave: false,
+        saveUninitialized: true
+    }));
 
     app.use(bodyParser.urlencoded({
         extended: true
@@ -31,11 +38,6 @@ module.exports = function () {
         indentedSyntax :true
     }));
 
-    app.use(cookieSession({
-        name: 'session',
-        keys: ['secret_key1', 'secret_key2']
-    }));
-    
 
     app.set('views','./app/views');
     app.set('view engine', 'jade');

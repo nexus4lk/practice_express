@@ -28,6 +28,9 @@
      "jade" : "^1.11.0",
      "node-sass-middleware" : "^0.9.0",
      "express-validator" : "^2.14.0",
-     "cookie-session" : "^1.2.0"
+     "cookie-session" : "^1.2.0",
+     "express-session" : "^1.11.0",
+     "connect-redis" : "^2.4.0",
+     "mongoose" : "^4.2.6"
   }
 }

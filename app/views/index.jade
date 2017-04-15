@@ -6,7 +6,7 @@ html
     body
         h1= title
         if isLoggedIn
-            h3 You are logged in.
+            h3= message
             form(name='logout', method='POST', action='logout')
                 div
                     input(type='submit', value='logout')
