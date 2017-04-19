@@ -6,6 +6,8 @@ var sass = require('node-sass-middleware');
 var validator = require('express-validator');
 var session = require('express-session');
 var redisStore = require('connect-redis')(session);
+var config = require('./config');
+var passport = require('passport');
 
 module.exports = function () {
 
@@ -18,10 +20,13 @@ module.exports = function () {
     }
 
     app.use(session({
-        secret: 'secret_key',
+        secret: config.sessionSecret,
         resave: false,
         saveUninitialized: true
     }));
+
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.use(bodyParser.urlencoded({
         extended: true
